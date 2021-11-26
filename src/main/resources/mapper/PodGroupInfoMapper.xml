@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ~ Copyright (C) @2021 Webank Group Holding Limited
+  ~ <p>
+  ~ Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
+  ~ in compliance with the License. You may obtain a copy of the License at
+  ~ <p>
+  ~ http://www.apache.org/licenses/LICENSE-2.0
+  ~ <p>
+  ~ Unless required by applicable law or agreed to in writing, software distributed under the License
+  ~ is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
+  ~ or implied. See the License for the specific language governing permissions and limitations under
+  ~ the License.
+  -->
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.webank.wcs.rm.database.dao.PodGroupInfoMapper">
+    <resultMap type="cn.webank.wcs.rm.database.dto.PodGroupInfo" id="PodGroupInfoMap">
+        <result property="name" column="name"/>
+        <result property="type" column="type"/>
+        <result property="subsystemId" column="subsystem_id"/>
+        <result property="dcn" column="dcn"/>
+        <result property="idc" column="idc"/>
+        <result property="networkArea" column="network_area"/>
+        <result property="containerResource" column="container_resource"/>
+        <result property="createTime" column="create_time"/>
+        <result property="updateTime" column="update_time"/>
+    </resultMap>
+
+    <select id="getByPage" resultMap="PodGroupInfoMap">
+        select * from  `pod_group_info`
+        <trim prefix="where" suffixOverrides="and | or">
+            <if test="info.name != null and info.name!=''">
+                `name` = #{info.name} and
+            </if>
+            <if test="info.type != null and info.type!=''">
+                `type` = #{info.type} and
+            </if>
+            <if test="info.subsystemId != null and info.subsystemId!=''">
+                `subsystem_id` = #{info.subsystemId} and
+            </if>
+            <if test="info.dcn != null and info.dcn!=''">
+                `dcn` = #{info.dcn} and
+            </if>
+            <if test="info.idc != null and info.idc!=''">
+                `idc` = #{info.idc} and
+            </if>
+            <if test="info.networkArea != null and info.networkArea!=''">
+                `network_area` = #{info.networkArea} and
+            </if>
+            <if test="info.containerResource != null and info.containerResource!=''">
+                `container_resource` = #{info.containerResource} and
+            </if>
+        </trim>
+    </select>
+
+
+</mapper>

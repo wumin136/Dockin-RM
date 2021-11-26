@@ -136,6 +136,28 @@ CREATE TABLE IF NOT EXISTS `subsystem` (
 
 -- 数据导出被取消选择。
 
+-- 导出  表 dockin_rm_data_dev.pod_group_info 结构
+CREATE TABLE `pod_group_info` (
+  `name` VARCHAR(80) NOT NULL COLLATE 'utf8mb4_bin',
+  `type` VARCHAR(20) NOT NULL COLLATE 'utf8mb4_bin',
+  `fixed_instance` INT(11) NOT NULL DEFAULT '0',
+  `total_instance` INT(11) NOT NULL DEFAULT '0',
+  `subsystem_id` VARCHAR(100) NOT NULL COLLATE 'utf8mb4_bin',
+  `dcn` VARCHAR(100) NULL DEFAULT NULL COLLATE 'utf8mb4_bin',
+  `idc` VARCHAR(80) NULL DEFAULT NULL COLLATE 'utf8mb4_bin',
+  `cluster_id` VARCHAR(80) NULL DEFAULT NULL COLLATE 'utf8mb4_bin',
+  `pod_group_tag` VARCHAR(80) NULL DEFAULT NULL COLLATE 'utf8mb4_bin',
+  `network_area` VARCHAR(80) NULL DEFAULT NULL COLLATE 'utf8mb4_bin',
+  `container_resource` VARCHAR(512) NOT NULL COLLATE 'utf8mb4_bin',
+  `create_time` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `update_time` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`name`),
+  KEY `IDX_subsystem` (`subsystem_id`),
+  KEY `IDX_update_time` (`update_time`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
+
+-- 数据导出被取消选择。
+
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
 /*!40014 SET FOREIGN_KEY_CHECKS=IF(@OLD_FOREIGN_KEY_CHECKS IS NULL, 1, @OLD_FOREIGN_KEY_CHECKS) */;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
